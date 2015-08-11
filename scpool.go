@@ -14,7 +14,7 @@ package main
 import (
     "net/http"
     "container/list"
-    "encoding/JSON"
+    "encoding/json"
     "errors"
     "fmt"
     "flag"
