@@ -19,4 +19,9 @@ includes a (useful) js script for initializing your pool with some keys.
         -d '{ "key" : "your-key", "time" : "2033/03/01 15:33:22 0000" }' \
         -H "Content-Type: application/json"
 
+ list all keys
+
+    curl localhost:8000/keys
+
+
 license: MIT (LICENSE)
