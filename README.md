@@ -23,5 +23,5 @@ includes a (useful) js script for initializing your pool with some keys.
 
     curl localhost:8000/keys
 
-package: https://gobuilder.me/github.com/murlocbrand/scpool
-  license: MIT (LICENSE)
+package: https://gobuilder.me/github.com/murlocbrand/scpool  
+license: MIT (LICENSE)
