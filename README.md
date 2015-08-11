@@ -1,7 +1,8 @@
 scpool: soundcloud client_id key pool server.
 
- register a key
+includes a (useful) js script for initializing your pool with some keys.
 
+ register a key
     
     curl -X POST localhost:8000/new \
         -d '{ "key" : "your-key" }' \
@@ -13,9 +14,9 @@ scpool: soundcloud client_id key pool server.
     curl localhost:8000/get
 
  set key reset time
-
     
-    curl -X POST localhost:8000/new \
+    curl -X POST localhost:8000/set \
         -d '{ "key" : "your-key", "time" : "2033/03/01 15:33:22 0000" }' \
         -H "Content-Type: application/json"
-    
+
+license: MIT (LICENSE)
