@@ -1,3 +1,4 @@
+// Copyright (c) 2015 Axel Smeets
 package main
 
 // Get an available key:
