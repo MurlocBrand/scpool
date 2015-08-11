@@ -64,7 +64,7 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     }
 }
 
-// curl -X POST http://localhost:8000/new -D key=wopp
+// Try to register a key. 
 func registerKey(w http.ResponseWriter, r *http.Request) *apiError {
     decoder := json.NewDecoder(r.Body)
     defer r.Body.Close()
@@ -104,7 +104,8 @@ func registerKey(w http.ResponseWriter, r *http.Request) *apiError {
     w.Write([]byte(msg.Key))
     return nil
 }
-// curl -X PUT http://localhost:8000/set -D key=wopp,time=t
+
+// Try to set the reset_time of a key.
 func updateKey(w http.ResponseWriter, r *http.Request) *apiError {
     // parse body
     decoder := json.NewDecoder(r.Body)
@@ -160,7 +161,8 @@ func updateKey(w http.ResponseWriter, r *http.Request) *apiError {
     w.Write([]byte("Ok"))
     return nil
 }
-// curl http://localhost:8000/get
+
+// Try to get a key.
 func acquireKey(w http.ResponseWriter, r *http.Request) *apiError {
     if currentKey == nil {
         return &apiError{
@@ -208,6 +210,8 @@ func b2str(b bool) string {
     }
     return "unavailable"
 }
+
+// Dump all keys and some info: KEY STATUS RESET_DATE
 func dumpKeys(w http.ResponseWriter, r *http.Request) *apiError {
     for e := Keys.Front(); e != nil; e = e.Next() {
         ke := e.Value.(*KeyEntry)
@@ -221,7 +225,7 @@ func dumpKeys(w http.ResponseWriter, r *http.Request) *apiError {
 }
 
 func main() {
-    serverAddr := flag.String("-addr", ":8000", "server address")
+    serverAddr := flag.String("addr", ":8000", "server address")
     flag.Parse()
 
     http.Handle("/new", handler(registerKey))
